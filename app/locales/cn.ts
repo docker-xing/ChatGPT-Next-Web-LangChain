@@ -428,10 +428,7 @@ const cn = {
   },
   Store: {
     DefaultTopic: "新的聊天",
-    BotHello: `1：**新增**🚀：GPT联网模式和谷歌AI图片识别。
-    2：**GPT联网模式**👉：插件默认已经打开，使用的时候最前面加上**搜索**二字。
-    3：**谷歌AI图片识别👉**：直接切换模式，上传图片就可以使用（一分钟两次）。
-    4：**欢迎您的使用**🌞`,
+    BotHello: `有什么可以帮你的吗？**[公告](https://v0tpcjz6hm8.feishu.cn/docx/EZV7d3Epho0qlNxCkFRcN3Uhnjf?from=from_copylink)**`,
     Error: "出错了，稍后重试吧",
     Prompt: {
       History: (content: string) => "这是历史聊天总结作为前情提要：" + content,
