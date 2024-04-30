@@ -83,6 +83,15 @@ export const getServerSideConfig = () => {
     ",",
   );
 
+  // 添加处理 GOOGLE_API_KEY 的新代码
+  const googleApiKeyEnvVar = process.env.GOOGLE_API_KEY ?? "";
+  const googleApiKeys = googleApiKeyEnvVar.split(",").map((v) => v.trim());
+  const randomGoogleIndex = Math.floor(Math.random() * googleApiKeys.length);
+  const googleApiKey = googleApiKeys[randomGoogleIndex];
+  console.log(
+    `[Server Config] using ${randomGoogleIndex + 1} of ${googleApiKeys.length} Google api key`,
+  );
+  
   return {
     baseUrl: process.env.BASE_URL,
     apiKey,
@@ -93,8 +102,9 @@ export const getServerSideConfig = () => {
     azureApiKey: process.env.AZURE_API_KEY,
     azureApiVersion: process.env.AZURE_API_VERSION,
 
-    isGoogle,
-    googleApiKey: process.env.GOOGLE_API_KEY,
+    // 更新返回的配置对象，使用新的 googleApiKey
+    isGoogle: googleApiKeys.length > 0, // 如果有一个或多个 Google API 密钥，则此值为 true
+    googleApiKey, // 使用随机选择的 Google API 密钥
     googleUrl: process.env.GEMINI_BASE_URL ?? process.env.GOOGLE_URL,
 
     isAnthropic,
